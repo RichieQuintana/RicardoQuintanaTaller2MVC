@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using RicardoQuintanaTaller2MVC.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<RicardoQuintanaTaller2MVCContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RicardoQuintanaTaller2MVCContext") ?? throw new InvalidOperationException("Connection string 'RicardoQuintanaTaller2MVCContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
